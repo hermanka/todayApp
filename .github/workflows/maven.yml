@@ -33,18 +33,19 @@ jobs:
       #   run: docker images
       # - name: run Docker
       #   run: docker run -d -p 80:80 --name docker-apache -d httpd
-
-      - name: Build container 
-        uses: addnab/docker-run-action@v3
-        with:
-          image: httpd
-          # options: -v ${{ github.workspace }}:/usr/local/apache2/htdocs/
-          run: |
-                pwd
-                ls -l /usr/local/apache2/htdocs/
-                cat /usr/local/apache2/htdocs/index.html
+      - name: Building container
+        run: docker build -t my-apache2 .
+      # - name: Build container 
+      #   uses: addnab/docker-run-action@v3
+      #   with:
+      #     image: httpd
+      #     # options: -v ${{ github.workspace }}:/usr/local/apache2/htdocs/
+      #     run: |
+      #           pwd
+      #           ls -l /usr/local/apache2/htdocs/
+      #           cat /usr/local/apache2/htdocs/index.html
       - name: run Docker
-        run: docker run -d -p 80:80 --name docker-apache -d httpd
+        run: docker run -d -p 80:80 --name docker-apache -d my-apache2
       - name: check server
         run: curl http://localhost:80 
       # - name:  Install Google Chrome # Using shell script to install Google Chrome
