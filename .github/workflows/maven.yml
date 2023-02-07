@@ -32,7 +32,7 @@ jobs:
       - name: check Docker
         run: docker images
       - name: run Docker
-        run: docker run -d -p 80:80 --name docker-apache -v "$PWD":/var/www/html php:7.2-apache
+        run: docker run -d -p 80:80 --name docker-apache -d php:7.2-apache
       - name: check server
         run: curl -Is http://localhost:80 | head -n 1 
       - name:  Install Google Chrome # Using shell script to install Google Chrome
