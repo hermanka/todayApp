@@ -34,11 +34,14 @@ jobs:
       # - name: run Docker
       #   run: docker run -d -p 80:80 --name docker-apache -d httpd
 
-      - name: Run Docker container 
+      - name: Build container 
         uses: addnab/docker-run-action@v3
         with:
           image: httpd
           run: ls -l
+      
+      - name: run Docker
+        run: docker run -d -p 80:80 --name docker-apache -d httpd
       - name: check server
         run: curl http://localhost:80 
       - name:  Install Google Chrome # Using shell script to install Google Chrome
