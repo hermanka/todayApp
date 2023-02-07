@@ -38,7 +38,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: httpd
-          run: ls -l /var/www
+          run: ls -l
       - name: check server
         run: curl http://localhost:80 
       - name:  Install Google Chrome # Using shell script to install Google Chrome
