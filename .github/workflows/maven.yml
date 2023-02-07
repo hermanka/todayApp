@@ -15,36 +15,46 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  run-tests:
     runs-on: ubuntu-latest
-
     steps:
-    
-    - uses: actions/checkout@v3
-    - name: Show Working directory
-      run: ls
-    - name:  Install Google Chrome # Using shell script to install Google Chrome
-      run:   |
-              chmod +x ./scripts/InstallChrome.sh
-              ./scripts/InstallChrome.sh 
-    - name: Check out Selenium Script
-      uses: actions/checkout@main
-      with:
-        repository: hermanka/SeleniumTry
-        path: './SeleniumTry'
-    - name: Show Working directory
-      run: ls
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: maven
-    - name: Run Selenium Script
-      run: |
-            cd ./SeleniumTry
-            mvn test
+      - name: Checkout the repo      
+        uses: actions/checkout@v3
+      - name: Show Working directory
+        run: ls
+      # - name: Publish AUT to Docker
+      #   uses: addnab/docker-run-action@v3
+      #   with:
+      #     image: test-image:latest
+      #     run: echo "hello world"
+      - name : RUn Docker
+        run : |
+                docker pull httpd
+                docker images
+                docker run -d --name docker-apache -p 80:80 -d httpd
+      - name:  Install Google Chrome # Using shell script to install Google Chrome
+        run:   |
+                chmod +x ./scripts/InstallChrome.sh
+                ./scripts/InstallChrome.sh 
+      - name: Check out Selenium Script
+        uses: actions/checkout@main
+        with:
+          repository: hermanka/SeleniumTry
+          path: './SeleniumTry'
+      - name: Show Working directory
+        run: ls
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - name: Run Selenium Script
+        run: |
+              cd ./SeleniumTry
+              mvn test
+      - name : Stop Docker
+        run : docker stop docker-apache
     
     
    
