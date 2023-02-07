@@ -34,7 +34,7 @@ jobs:
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -v "$PWD":/var/www/html php:7.2-apache
       - name: check server
-        run: curl http://localhost
+        run: curl http://localhost:80/
       - name:  Install Google Chrome # Using shell script to install Google Chrome
         run:   |
                 chmod +x ./scripts/InstallChrome.sh
