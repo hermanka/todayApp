@@ -8,10 +8,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-lates, macOS-latest]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo      
         uses: actions/checkout@v3     
