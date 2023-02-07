@@ -38,7 +38,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: httpd
-          options: -v ${{ github.workspace }}:/htdocs
+          options: -v ${{ github.workspace }}:/usr/local/apache2/htdocs/
           run: |
                 pwd
                 ls -l /usr/local/apache2/htdocs/
