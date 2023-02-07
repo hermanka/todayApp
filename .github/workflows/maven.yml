@@ -41,7 +41,7 @@ jobs:
           options: -v ${{ github.workspace }}:/htdocs
           run: |
                 PWD
-                ls -l /
+                ls -l /var
       
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -d httpd
