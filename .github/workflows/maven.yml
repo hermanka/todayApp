@@ -40,8 +40,8 @@ jobs:
           image: httpd
           options: -v ${{ github.workspace }}:/htdocs
           run: |
-                PWD
-                ls -l /var
+                pwd
+                ls -l /usr/local/apache2/htdocs/
       
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -d httpd
