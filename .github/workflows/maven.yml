@@ -38,7 +38,8 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: httpd
-          run: ls -l
+          options: -v ${{ github.workspace }}:/htdocs
+          run: ls -l /htdocs
       
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -d httpd
