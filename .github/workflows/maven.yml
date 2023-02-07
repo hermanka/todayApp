@@ -38,10 +38,11 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: httpd
-          options: -v ${{ github.workspace }}:/usr/local/apache2/htdocs/
+          # options: -v ${{ github.workspace }}:/usr/local/apache2/htdocs/
           run: |
                 pwd
                 ls -l /usr/local/apache2/htdocs/
+                cat /usr/local/apache2/htdocs/index.html
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -d httpd
       - name: check server
