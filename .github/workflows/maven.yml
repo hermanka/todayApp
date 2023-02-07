@@ -32,6 +32,7 @@ jobs:
       uses: actions/checkout@main
       with:
         repository: hermanka/SeleniumTry
+        path: './SeleniumTry'
     - name: Show Working directory
       run: ls
     - name: Set up JDK 11
@@ -41,7 +42,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run Selenium Script
-      run: mvn test
+      run: |
+            cd ./SeleniumTry
+            mvn test
     
     
    
