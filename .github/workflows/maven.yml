@@ -42,8 +42,6 @@ jobs:
           run: |
                 pwd
                 ls -l /usr/local/apache2/htdocs/
-                curl http://localhost:80 
-      
       - name: run Docker
         run: docker run -d -p 80:80 --name docker-apache -d httpd
       - name: check server
