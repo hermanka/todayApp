@@ -29,9 +29,9 @@ jobs:
       #     run: echo "hello world"
       - name : RUn Docker
         run : |
-                docker pull httpd
+                docker pull php
                 docker images
-                docker run -d --name docker-apache -p 80:80 -d httpd
+                docker run -d -p 80:80 --name docker-apache -v "$PWD":/var/www/html php:7.2-apache
       - name:  Install Google Chrome # Using shell script to install Google Chrome
         run:   |
                 chmod +x ./scripts/InstallChrome.sh
