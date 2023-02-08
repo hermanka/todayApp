@@ -38,7 +38,7 @@ jobs:
       - name: Run Selenium Script
         run: |
               cd ./SeleniumTry
-              mvn test
+              mvn clean test
       - name: Upload images
         id: upload-image-0
         uses: McCzarny/upload-image@v1.2.5
