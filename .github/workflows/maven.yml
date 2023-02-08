@@ -39,7 +39,7 @@ jobs:
         run: |
               cd ./SeleniumTry
               mvn clean test
-      - name: Upload images
+      - name: Upload image
         id: upload-image-0
         uses: McCzarny/upload-image@v1.2.5
         with:
