@@ -10,7 +10,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repo      
+      - name: Checkout the repo
         uses: actions/checkout@v3     
       - name: Building container
         run: docker build -t my-apache2 .     
