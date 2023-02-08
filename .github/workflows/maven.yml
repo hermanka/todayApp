@@ -39,6 +39,13 @@ jobs:
         run: |
               cd ./SeleniumTry
               mvn test
+      - name: Upload image
+        id: upload-image-0
+        uses: McCzarny/upload-image@v1.2.5
+        with:
+          path: test.png
+          uploadMethod: imgbb
+          apiKey: '${{ secrets.IMGBB_API_KEY }}'
       - name : Stop Docker
         run : docker stop docker-apache
 
